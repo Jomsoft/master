@@ -62,6 +62,8 @@
     "@loopback/build": "^1.0.2",
     "@loopback/testlab": "^1.0.2",
     "@types/node": "^10.11.2",
-    "nodemon": "^1.18.9"
+    "@types/ora": "^3.0.0",
+    "nodemon": "^1.18.9",
+    "ora": "^3.0.0"
   }
 }

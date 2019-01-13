@@ -22,7 +22,6 @@ export class MySequence implements SequenceHandler {
   ) { }
 
   async handle(context: RequestContext) {
-    console.log('starting handle')
     try {
       const { request, response } = context;
       const route = this.findRoute(request);

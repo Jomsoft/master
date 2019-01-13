@@ -18,8 +18,10 @@ import {
 } from '@loopback/rest';
 import { Tenants } from '../models';
 import { TenantsRepository } from '../repositories';
+import { startBillingCron } from '../cron/cronjob';
 
 export class TenantsController {
+
   constructor(
     @repository(TenantsRepository)
     public tenantsRepository: TenantsRepository,

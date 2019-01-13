@@ -1,5 +1,5 @@
 import { BootMixin } from '@loopback/boot';
-import { ApplicationConfig } from '@loopback/core';
+import { ApplicationConfig, inject } from '@loopback/core';
 import {
   RestExplorerBindings,
   RestExplorerComponent,
@@ -9,7 +9,7 @@ import { RestApplication } from '@loopback/rest';
 import { ServiceMixin } from '@loopback/service-proxy';
 import * as path from 'path';
 import { MySequence } from './sequence';
-import { cron } from './cron/cronjob';
+import { TenantsRepository } from './repositories';
 
 export class LoopbackBillingApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -17,6 +17,7 @@ export class LoopbackBillingApplication extends BootMixin(
   constructor(options: ApplicationConfig = {}) {
 
     super(options);
+    this.repository.bind(TenantsRepository);
 
     // Set up the custom sequence
     this.sequence(MySequence);
@@ -40,7 +41,5 @@ export class LoopbackBillingApplication extends BootMixin(
         nested: true,
       },
     };
-
-    cron.start();
   }
 }

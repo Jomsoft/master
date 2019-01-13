@@ -5,3 +5,4 @@ export * from './invoices.controller';
 export * from './meters.controller';
 export * from './rate.controller';
 export * from './tenants.controller';
+export * from './cron-job.controller';
