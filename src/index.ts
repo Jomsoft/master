@@ -7,7 +7,6 @@ export { LoopbackBillingApplication };
 export async function main(options: ApplicationConfig = {}) {
   const rootPath = '/api';
   const app = new LoopbackBillingApplication(options);
-  app.basePath('/api');
   await app.boot();
   await app.start();
 
@@ -18,5 +17,6 @@ export async function main(options: ApplicationConfig = {}) {
 
   return app;
 }
+
 
 

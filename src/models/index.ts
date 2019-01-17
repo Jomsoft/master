@@ -5,3 +5,6 @@ export * from './invoices.model';
 export * from './counters.model';
 export * from './category.model';
 export * from './cron-job.model';
+export * from './agenda.job-option.model';
+export * from './agenda.job.model';
+export * from './agenda.properties.model';

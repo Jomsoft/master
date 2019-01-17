@@ -1,3 +1,5 @@
+
+
 import { BootMixin } from '@loopback/boot';
 import { ApplicationConfig, inject } from '@loopback/core';
 import {
@@ -10,6 +12,7 @@ import { ServiceMixin } from '@loopback/service-proxy';
 import * as path from 'path';
 import { MySequence } from './sequence';
 import { TenantsRepository } from './repositories';
+import { defineAgenda } from './cron/agenda/agenda.define';
 
 export class LoopbackBillingApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -18,6 +21,7 @@ export class LoopbackBillingApplication extends BootMixin(
 
     super(options);
     this.repository.bind(TenantsRepository);
+    this.basePath('/api');
 
     // Set up the custom sequence
     this.sequence(MySequence);
@@ -41,5 +45,7 @@ export class LoopbackBillingApplication extends BootMixin(
         nested: true,
       },
     };
+
+    defineAgenda();
   }
 }
