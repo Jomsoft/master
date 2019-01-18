@@ -5,8 +5,8 @@ import { agenda } from './agenda/agenda.config';
 import { ObjectId } from 'bson';
 
 export let createJob = async (agendaJob: AgendaJob) => {
-  let jobNames = agendaJob.names.toUpperCase();
-  let jobs = await agenda.create(jobNames, agendaJob.data);
+  // let jobNames = agendaJob.names.toUpperCase();
+  let jobs = await agenda.create(agendaJob.names, agendaJob.data);
   console.log(jobs.attrs);
   if (agendaJob.jobSchedule && agendaJob.jobRepeatEvery) {
     jobs.repeatAt(agendaJob.jobSchedule);

@@ -159,6 +159,7 @@ export class AgendaController {
     @requestBody() agenda: AgendaProperties,
     @param.path.string('id') id: string,
   ): Promise<object> {
+    console.log(agenda);
     await this.agendaRepository.updateById(id, agenda);
     return { 'response': 'success' };
   }
