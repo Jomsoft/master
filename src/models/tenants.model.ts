@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import { Units } from './units.model';
+import { Invoices } from './invoices.model';
+import { Entity, model, property, hasMany, belongsTo } from '@loopback/repository';
 
 @model()
 export class Tenants extends Entity {
@@ -8,10 +10,10 @@ export class Tenants extends Entity {
   })
   _id?: string;
 
-  @property({
-    type: 'string',
-  })
-  lotNo?: string;
+  // @property({
+  //   type: 'string',
+  // })
+  // lotNo?: string;
 
   @property({
     type: 'string',
@@ -52,6 +54,12 @@ export class Tenants extends Entity {
     type: 'string',
   })
   tenantNo?: string;
+
+  @hasMany(() => Invoices, { keyTo: 'unitId' })
+  invoices?: Invoices[];
+
+  @belongsTo(() => Units, { keyFrom: 'unitId', keyTo: '_id' })
+  unitId: string;
 
   constructor(data?: Partial<Tenants>) {
     super(data);

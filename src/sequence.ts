@@ -9,6 +9,7 @@ import {
   Send,
   SequenceHandler,
 } from '@loopback/rest';
+import { AuthenticationBindings, AuthenticateFn } from '@loopback/authentication';
 
 const SequenceActions = RestBindings.SequenceActions;
 
@@ -19,13 +20,15 @@ export class MySequence implements SequenceHandler {
     @inject(SequenceActions.INVOKE_METHOD) protected invoke: InvokeMethod,
     @inject(SequenceActions.SEND) public send: Send,
     @inject(SequenceActions.REJECT) public reject: Reject,
+    @inject(AuthenticationBindings.AUTH_ACTION) protected authenticateRequest: AuthenticateFn
   ) { }
 
   async handle(context: RequestContext) {
-    console.log('starting handle')
     try {
       const { request, response } = context;
       const route = this.findRoute(request);
+      // auth req
+      await this.authenticateRequest(request);
       const args = await this.parseParams(request, route);
       const result = await this.invoke(route, args);
       this.send(response, result);

@@ -1,3 +1,4 @@
+import { Units } from './../models/units.model';
 import {
   Count,
   CountSchema,
@@ -20,6 +21,7 @@ import { Tenants } from '../models';
 import { TenantsRepository } from '../repositories';
 
 export class TenantsController {
+
   constructor(
     @repository(TenantsRepository)
     public tenantsRepository: TenantsRepository,
@@ -136,14 +138,17 @@ export class TenantsController {
     await this.tenantsRepository.deleteById(id);
   }
 
-  @get('/tenants/test', {
-    responses: {
-      '204': {
-        description: 'Tenants DELETE success',
-      },
-    },
-  })
-  async testEndpoint(): Promise<void> {
-    console.log(this.tenantsRepository.modelClass.modelName);
+  // @get('/tenants/{id}/invoices')
+  // async createOrder(
+  //   @param.path.string('id') lotNo: typeof Tenants.prototype.lotNo,
+  // ) {
+  //   return await this.tenantsRepository.invoice(lotNo).find();
+  // }
+
+  @get('/tenants/{id}/unitId')
+  async getCustomer(
+    @param.path.string('id') unitId: typeof Tenants.prototype.unitId,
+  ): Promise<Units> {
+    return await this.tenantsRepository.unit(unitId);
   }
 }
