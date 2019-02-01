@@ -1,3 +1,5 @@
+import { AuthenticateActionProvider } from './providers/auth-action.provider';
+import { AuthStrategyProvider } from './providers/auth-strategy.provider';
 
 
 import { BootMixin } from '@loopback/boot';
@@ -13,6 +15,7 @@ import * as path from 'path';
 import { MySequence } from './sequence';
 import { TenantsRepository } from './repositories';
 import { defineAgenda } from './cron/agenda/agenda.define';
+import { AuthenticationBindings, AuthenticationComponent } from '@loopback/authentication';
 
 export class LoopbackBillingApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -20,9 +23,14 @@ export class LoopbackBillingApplication extends BootMixin(
   constructor(options: ApplicationConfig = {}) {
 
     super(options);
-    this.repository.bind(TenantsRepository);
     this.basePath('/api');
 
+
+    // Bind auth provider
+    this.component(AuthenticationComponent);
+    this.bind(AuthenticationBindings.STRATEGY).toProvider(AuthStrategyProvider);
+    this.bind(AuthenticationBindings.AUTH_ACTION).toProvider(
+      AuthenticateActionProvider);
     // Set up the custom sequence
     this.sequence(MySequence);
 

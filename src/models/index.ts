@@ -8,3 +8,6 @@ export * from './cron-job.model';
 export * from './agenda.job-option.model';
 export * from './agenda.job.model';
 export * from './agenda.properties.model';
+export * from './user.model';
+export * from './credential.model';
+export * from './units.model';
