@@ -7,7 +7,7 @@ if (require.main === module) {
   const config = {
     rest: {
       port: +process.env.PORT || 3000,
-      host: process.env.HOST || '192.168.0.180' || '127.0.0.1',
+      host: process.env.HOST || '127.0.0.1',
       // basePath: '/api',
       openApiSpec: {
         // useful when used with OASGraph to locate your application

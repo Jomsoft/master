@@ -23,9 +23,7 @@ export class LoopbackBillingApplication extends BootMixin(
   constructor(options: ApplicationConfig = {}) {
 
     super(options);
-    this.basePath('/api');
-
-
+    
     // Bind auth provider
     this.component(AuthenticationComponent);
     this.bind(AuthenticationBindings.STRATEGY).toProvider(AuthStrategyProvider);
