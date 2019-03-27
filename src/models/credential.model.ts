@@ -4,11 +4,11 @@ import { model, Model, property } from '@loopback/repository';
 export class Credential extends Model {
 
   @property()
+  email?: string;
+  @property()
   password: string;
   @property()
   username?: string;
-  @property()
-  email?: string;
   @property()
   role?: string;
 

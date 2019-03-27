@@ -1,4 +1,5 @@
 import { Entity, model, property } from '@loopback/repository';
+import { Tenants } from './tenants.model';
 
 @model()
 export class Invoices extends Entity {
@@ -13,25 +14,13 @@ export class Invoices extends Entity {
   })
   invNo?: string;
 
-  @property({
-    type: 'date',
-  })
-  invDate?: string;
+  @property()
+  invDate?: Date;
 
   @property({
-    type: 'string',
+    type: 'object',
   })
-  tenantNo?: string;
-
-  @property({
-    type: 'string',
-  })
-  tenantName?: string;
-
-  @property({
-    type: 'string',
-  })
-  lotNo?: string;
+  tenant?: Tenants;
 
   @property({
     type: 'string',

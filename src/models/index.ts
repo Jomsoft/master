@@ -11,3 +11,5 @@ export * from './agenda.properties.model';
 export * from './user.model';
 export * from './credential.model';
 export * from './units.model';
+export * from './buildings.model';
+export * from './settings.model';

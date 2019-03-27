@@ -11,6 +11,11 @@ export class Units extends Entity {
   @property({
     type: 'string',
   })
+  building?: string;
+
+  @property({
+    type: 'string',
+  })
   lotNo?: string;
 
   constructor(data?: Partial<Units>) {

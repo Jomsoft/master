@@ -5,6 +5,7 @@ export declare class Meters extends Entity {
     serialNo?: string;
     tariff?: string;
     installed?: string;
+    startRead?: number;
     dismantled?: string;
     created?: string;
     updated?: string;

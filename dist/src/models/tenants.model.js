@@ -29,6 +29,18 @@ __decorate([
         type: 'string',
     }),
     __metadata("design:type", String)
+], Tenants.prototype, "address", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Tenants.prototype, "lotNo", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
 ], Tenants.prototype, "tenantName", void 0);
 __decorate([
     repository_1.property({
@@ -36,6 +48,12 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Tenants.prototype, "moveIn", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Tenants.prototype, "moveOut", void 0);
 __decorate([
     repository_1.property({
         type: 'number',
@@ -47,25 +65,7 @@ __decorate([
         type: 'string',
     }),
     __metadata("design:type", String)
-], Tenants.prototype, "moveOut", void 0);
-__decorate([
-    repository_1.property({
-        type: 'string',
-    }),
-    __metadata("design:type", String)
-], Tenants.prototype, "status", void 0);
-__decorate([
-    repository_1.property({
-        type: 'string',
-    }),
-    __metadata("design:type", String)
-], Tenants.prototype, "entityCd", void 0);
-__decorate([
-    repository_1.property({
-        type: 'string',
-    }),
-    __metadata("design:type", String)
-], Tenants.prototype, "projectNo", void 0);
+], Tenants.prototype, "endKwh", void 0);
 __decorate([
     repository_1.property({
         type: 'string',

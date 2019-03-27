@@ -10,30 +10,52 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
-let Credential = class Credential extends repository_1.Model {
+let Settings = class Settings extends repository_1.Entity {
     constructor(data) {
         super(data);
     }
 };
 __decorate([
-    repository_1.property(),
-    __metadata("design:type", String)
-], Credential.prototype, "email", void 0);
+    repository_1.property({
+        type: 'number',
+        id: true,
+    }),
+    __metadata("design:type", Number)
+], Settings.prototype, "_id", void 0);
 __decorate([
-    repository_1.property(),
+    repository_1.property({
+        type: 'string',
+        required: true,
+    }),
     __metadata("design:type", String)
-], Credential.prototype, "password", void 0);
+], Settings.prototype, "name", void 0);
 __decorate([
-    repository_1.property(),
+    repository_1.property({
+        type: 'string',
+    }),
     __metadata("design:type", String)
-], Credential.prototype, "username", void 0);
+], Settings.prototype, "address", void 0);
 __decorate([
-    repository_1.property(),
+    repository_1.property({
+        type: 'string',
+    }),
     __metadata("design:type", String)
-], Credential.prototype, "role", void 0);
-Credential = __decorate([
+], Settings.prototype, "tel", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Settings.prototype, "email", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Settings.prototype, "description", void 0);
+Settings = __decorate([
     repository_1.model(),
     __metadata("design:paramtypes", [Object])
-], Credential);
-exports.Credential = Credential;
-//# sourceMappingURL=credential.model.js.map
+], Settings);
+exports.Settings = Settings;
+//# sourceMappingURL=settings.model.js.map

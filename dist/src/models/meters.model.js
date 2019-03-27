@@ -48,6 +48,12 @@ __decorate([
 ], Meters.prototype, "installed", void 0);
 __decorate([
     repository_1.property({
+        type: 'number',
+    }),
+    __metadata("design:type", Number)
+], Meters.prototype, "startRead", void 0);
+__decorate([
+    repository_1.property({
         type: 'string',
     }),
     __metadata("design:type", String)

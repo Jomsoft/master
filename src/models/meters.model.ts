@@ -29,6 +29,11 @@ export class Meters extends Entity {
   installed?: string;
 
   @property({
+    type: 'number',
+  })
+  startRead?: number;
+
+  @property({
     type: 'string',
   })
   dismantled?: string;

@@ -15,4 +15,6 @@ __export(require("./agenda.properties.model"));
 __export(require("./user.model"));
 __export(require("./credential.model"));
 __export(require("./units.model"));
+__export(require("./buildings.model"));
+__export(require("./settings.model"));
 //# sourceMappingURL=index.js.map

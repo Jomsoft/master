@@ -4,6 +4,7 @@ import * as jwt from 'jsonwebtoken';
 
 @model()
 export class Users extends Entity {
+  
   @property({
     type: 'string',
     id: true,

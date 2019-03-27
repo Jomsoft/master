@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
+const tenants_model_1 = require("./tenants.model");
 let Invoices = class Invoices extends repository_1.Entity {
     constructor(data) {
         super(data);
@@ -29,29 +30,15 @@ __decorate([
     __metadata("design:type", String)
 ], Invoices.prototype, "invNo", void 0);
 __decorate([
-    repository_1.property({
-        type: 'date',
-    }),
-    __metadata("design:type", String)
+    repository_1.property(),
+    __metadata("design:type", Date)
 ], Invoices.prototype, "invDate", void 0);
 __decorate([
     repository_1.property({
-        type: 'string',
+        type: 'object',
     }),
-    __metadata("design:type", String)
-], Invoices.prototype, "tenantNo", void 0);
-__decorate([
-    repository_1.property({
-        type: 'string',
-    }),
-    __metadata("design:type", String)
-], Invoices.prototype, "tenantName", void 0);
-__decorate([
-    repository_1.property({
-        type: 'string',
-    }),
-    __metadata("design:type", String)
-], Invoices.prototype, "lotNo", void 0);
+    __metadata("design:type", tenants_model_1.Tenants)
+], Invoices.prototype, "tenant", void 0);
 __decorate([
     repository_1.property({
         type: 'string',

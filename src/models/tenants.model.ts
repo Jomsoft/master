@@ -10,10 +10,15 @@ export class Tenants extends Entity {
   })
   _id?: string;
 
-  // @property({
-  //   type: 'string',
-  // })
-  // lotNo?: string;
+  @property({
+    type: 'string',
+  })
+  address?: string;
+
+  @property({
+    type: 'string',
+  })
+  lotNo?: string;
 
   @property({
     type: 'string',
@@ -26,6 +31,11 @@ export class Tenants extends Entity {
   moveIn?: string;
 
   @property({
+    type: 'string',
+  })
+  moveOut?: string;
+
+  @property({
     type: 'number',
   })
   startKwh?: number;
@@ -33,22 +43,7 @@ export class Tenants extends Entity {
   @property({
     type: 'string',
   })
-  moveOut?: string;
-
-  @property({
-    type: 'string',
-  })
-  status?: string;
-
-  @property({
-    type: 'string',
-  })
-  entityCd?: string;
-
-  @property({
-    type: 'string',
-  })
-  projectNo?: string;
+  endKwh?: string;
 
   @property({
     type: 'string',

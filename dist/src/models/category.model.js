@@ -34,6 +34,36 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Category.prototype, "minCharge", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Category.prototype, "type", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Category.prototype, "icptUsage", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Category.prototype, "icptRate", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Category.prototype, "sedaUsage", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Category.prototype, "sedaRate", void 0);
 Category = __decorate([
     repository_1.model(),
     __metadata("design:paramtypes", [Object])

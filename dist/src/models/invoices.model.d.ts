@@ -1,11 +1,10 @@
 import { Entity } from '@loopback/repository';
+import { Tenants } from './tenants.model';
 export declare class Invoices extends Entity {
     _id?: string;
     invNo?: string;
-    invDate?: string;
-    tenantNo?: string;
-    tenantName?: string;
-    lotNo?: string;
+    invDate?: Date;
+    tenant?: Tenants;
     serialNo?: string;
     tariff?: string;
     minCharge?: string;
