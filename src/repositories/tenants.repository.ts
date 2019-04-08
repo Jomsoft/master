@@ -1,11 +1,11 @@
-import { UnitsRepository } from './units.repository';
-import { Units } from './../models/units.model';
-import { Getter } from '@loopback/context';
-import { DefaultCrudRepository, HasManyRepositoryFactory, repository, BelongsToAccessor } from '@loopback/repository';
-import { Tenants, Invoices } from '../models';
-import { BillingDataSource } from '../datasources';
-import { inject } from '@loopback/core';
-import { InvoicesRepository } from './invoices.repository';
+import {UnitsRepository} from './units.repository';
+import {Units} from './../models/units.model';
+import {Getter} from '@loopback/context';
+import {BelongsToAccessor, DefaultCrudRepository, HasManyRepositoryFactory, repository} from '@loopback/repository';
+import {Invoices, Tenants} from '../models';
+import {BillingDataSource} from '../datasources';
+import {inject} from '@loopback/core';
+import {InvoicesRepository} from './invoices.repository';
 
 export class TenantsRepository extends DefaultCrudRepository<
   Tenants,

@@ -1,0 +1,9 @@
+applications:
+- name: Jombill
+  disk_quota: 1G
+  instances: 1
+  memory: 512M
+  routes:
+  - route: jombill.mybluemix.net
+  stack: cflinuxfs2
+  health-check-type: process
