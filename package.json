@@ -58,6 +58,8 @@
     "agendash": "^0.4.0",
     "cfenv": "^1.2.2",
     "cron": "^1.6.0",
+    "firebase": "^5.9.4",
+    "firebase-admin": "^7.2.0",
     "isemail": "^3.2.0",
     "jsonwebtoken": "^8.4.0",
     "loopback-connector-mongodb": "^4.0.0",

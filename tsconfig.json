@@ -11,4 +11,9 @@
     "packages/*/node_modules/**",
     "**/*.d.ts"
   ],
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false
+  }
 }

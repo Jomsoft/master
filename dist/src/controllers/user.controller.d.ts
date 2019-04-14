@@ -1,5 +1,5 @@
 import { Count, Filter, Where } from '@loopback/repository';
-import { Users, Credential } from '../models';
+import { Credential, Users } from '../models';
 import { UserRepository } from '../repositories';
 import { UserProfile } from '@loopback/authentication';
 export declare class UserController {
@@ -20,4 +20,5 @@ export declare class UserController {
     findById(id: string): Promise<Users>;
     updateById(id: string, user: Users): Promise<void>;
     replaceById(id: string, user: Users): Promise<void>;
+    testFcm(): Promise<void>;
 }

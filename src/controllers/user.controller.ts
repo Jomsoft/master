@@ -1,27 +1,22 @@
-import { inject } from '@loopback/core';
+import {inject} from '@loopback/core';
+import {Count, CountSchema, Filter, repository, Where,} from '@loopback/repository';
 import {
-  Count,
-  CountSchema,
-  Filter,
-  repository,
-  Where,
-} from '@loopback/repository';
-import {
-  post,
-  param,
   get,
   getFilterSchemaFor,
   getWhereSchemaFor,
-  patch,
-  put,
-  del,
-  requestBody,
   HttpErrors,
+  param,
+  patch,
+  post,
+  put,
+  requestBody,
 } from '@loopback/rest';
-import { Users, Credential } from '../models';
-import { UserRepository } from '../repositories';
-import { validateCredentials, getAccessTokenForUser } from '../utils/user.auth';
-import { authenticate, AuthenticationBindings, UserProfile } from '@loopback/authentication';
+import {Credential, Users} from '../models';
+import {UserRepository} from '../repositories';
+import {getAccessTokenForUser, validateCredentials} from '../utils/user.auth';
+import {authenticate, AuthenticationBindings, UserProfile} from '@loopback/authentication';
+import * as admin from "firebase-admin";
+import {sendMessage} from "../utils/firebase-messaging";
 
 export class UserController {
   constructor(
@@ -162,6 +157,25 @@ export class UserController {
     @requestBody() user: Users,
   ): Promise<void> {
     await this.userRepository.replaceById(id, user);
+  }
+
+  @get('/fcmTest')
+  async testFcm(): Promise<void> {
+    // This registration token comes from the client FCM SDKs.
+    let registrationToken = 'e-y5LHI13io:APA91bFtTSjPvKXqg_0ir3bqypXWxL4qd16bvMA-9wJCIfbBw8lBxFSTUIEC7oLLrv5Xw6SzlSus2OGRGqVOfk-uXI2__NG4tWZHnp7KC2sg5-a5l4nArX2wuzxCPtQ_YzdSMoNslJjn';
+    let message = {
+      data: {
+        score: '850',
+        time: '2:45'
+      },
+      notification: {
+        title: 'Monthly invoice is here!',
+        body: 'Current due: RM359.00, Payable: RM 209.00'
+      },
+      token: registrationToken
+    };
+    sendMessage(message);
+
   }
 
   // @authenticate('jwt')

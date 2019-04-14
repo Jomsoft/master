@@ -19,13 +19,13 @@ export let createJob = async (agendaJob: AgendaJob) => {
     return ('Jobs not created');
   }
 
-  jobs.save().catch((error) => {
+  jobs.save().catch((error: Error) => {
     console.log(error);
     return 'Jobs not created';
-  })
+  });
 
   return jobs;
-}
+};
 
 export let deleteJob = async (objId?: string | ObjectId) => {
   let jobId = new ObjectId(objId);

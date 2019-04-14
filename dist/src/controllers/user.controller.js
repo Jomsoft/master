@@ -19,6 +19,7 @@ const models_1 = require("../models");
 const repositories_1 = require("../repositories");
 const user_auth_1 = require("../utils/user.auth");
 const authentication_1 = require("@loopback/authentication");
+const firebase_messaging_1 = require("../utils/firebase-messaging");
 let UserController = class UserController {
     constructor(userRepository, user) {
         this.userRepository = userRepository;
@@ -61,6 +62,22 @@ let UserController = class UserController {
     }
     async replaceById(id, user) {
         await this.userRepository.replaceById(id, user);
+    }
+    async testFcm() {
+        // This registration token comes from the client FCM SDKs.
+        let registrationToken = 'e-y5LHI13io:APA91bFtTSjPvKXqg_0ir3bqypXWxL4qd16bvMA-9wJCIfbBw8lBxFSTUIEC7oLLrv5Xw6SzlSus2OGRGqVOfk-uXI2__NG4tWZHnp7KC2sg5-a5l4nArX2wuzxCPtQ_YzdSMoNslJjn';
+        let message = {
+            data: {
+                score: '850',
+                time: '2:45'
+            },
+            notification: {
+                title: 'Monthly invoice is here!',
+                body: 'Current due: RM359.00, Payable: RM 209.00'
+            },
+            token: registrationToken
+        };
+        firebase_messaging_1.sendMessage(message);
     }
 };
 __decorate([
@@ -193,6 +210,12 @@ __decorate([
     __metadata("design:paramtypes", [String, models_1.Users]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "replaceById", null);
+__decorate([
+    rest_1.get('/fcmTest'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "testFcm", null);
 UserController = __decorate([
     __param(0, repository_1.repository(repositories_1.UserRepository)),
     __param(1, core_1.inject(authentication_1.AuthenticationBindings.CURRENT_USER, { optional: true })),

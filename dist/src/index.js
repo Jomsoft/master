@@ -4,6 +4,7 @@ const application_1 = require("./application");
 exports.LoopbackBillingApplication = application_1.LoopbackBillingApplication;
 const strings_1 = require("./utils/strings");
 const agenda_define_1 = require("./cron/agenda/agenda.define");
+const firebase_helper_1 = require("./utils/firebase-helper");
 const cfenv = require('cfenv');
 const appEnv = cfenv.getAppEnv();
 async function main(options = {}) {
@@ -26,5 +27,6 @@ async function main(options = {}) {
 exports.main = main;
 let init = async () => {
     await agenda_define_1.defineAgenda();
+    let firebase = firebase_helper_1.firebaseInit;
 };
 //# sourceMappingURL=index.js.map

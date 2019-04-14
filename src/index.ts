@@ -2,6 +2,7 @@ import {LoopbackBillingApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
 import {basePath} from './utils/strings';
 import {defineAgenda} from "./cron/agenda/agenda.define";
+import {firebaseInit} from "./utils/firebase-helper";
 
 const cfenv = require('cfenv');
 const appEnv = cfenv.getAppEnv();
@@ -29,6 +30,7 @@ export async function main(options: ApplicationConfig = {}) {
 
 let init = async () => {
     await defineAgenda();
+    let firebase = firebaseInit;
 };
 
 
