@@ -9,7 +9,6 @@ const rest_1 = require("@loopback/rest");
 const service_proxy_1 = require("@loopback/service-proxy");
 const path = require("path");
 const sequence_1 = require("./sequence");
-const agenda_define_1 = require("./cron/agenda/agenda.define");
 const authentication_1 = require("@loopback/authentication");
 class LoopbackBillingApplication extends boot_1.BootMixin(service_proxy_1.ServiceMixin(repository_1.RepositoryMixin(rest_1.RestApplication))) {
     constructor(options = {}) {
@@ -37,7 +36,6 @@ class LoopbackBillingApplication extends boot_1.BootMixin(service_proxy_1.Servic
                 nested: true,
             },
         };
-        agenda_define_1.defineAgenda();
     }
 }
 exports.LoopbackBillingApplication = LoopbackBillingApplication;

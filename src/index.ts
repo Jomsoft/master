@@ -1,6 +1,7 @@
 import {LoopbackBillingApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
 import {basePath} from './utils/strings';
+import {defineAgenda} from "./cron/agenda/agenda.define";
 
 const cfenv = require('cfenv');
 const appEnv = cfenv.getAppEnv();
@@ -17,7 +18,7 @@ export async function main(options: ApplicationConfig = {}) {
     app.basePath(basePath);
     await app.boot();
     await app.start();
-
+    await init();
 
     const url = app.restServer.url! + basePath;
     console.log(`Server is running at ${url}`);
@@ -25,6 +26,10 @@ export async function main(options: ApplicationConfig = {}) {
 
     return app;
 }
+
+let init = async () => {
+    await defineAgenda();
+};
 
 
 

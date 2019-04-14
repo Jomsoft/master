@@ -10,7 +10,6 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import * as path from 'path';
 import {MySequence} from './sequence';
-import {defineAgenda} from './cron/agenda/agenda.define';
 import {AuthenticationBindings, AuthenticationComponent} from '@loopback/authentication';
 
 export class LoopbackBillingApplication extends BootMixin(
@@ -47,7 +46,5 @@ export class LoopbackBillingApplication extends BootMixin(
                 nested: true,
             },
         };
-
-        defineAgenda();
     }
 }
