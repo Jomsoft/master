@@ -2,6 +2,7 @@ import { Count, Filter, Where } from '@loopback/repository';
 import { Credential, Users } from '../models';
 import { UserRepository } from '../repositories';
 import { UserProfile } from '@loopback/authentication';
+import * as admin from "firebase-admin";
 export declare class UserController {
     userRepository: UserRepository;
     private user;
@@ -20,5 +21,5 @@ export declare class UserController {
     findById(id: string): Promise<Users>;
     updateById(id: string, user: Users): Promise<void>;
     replaceById(id: string, user: Users): Promise<void>;
-    testFcm(): Promise<void>;
+    sendNotification(): Promise<admin.messaging.Message>;
 }

@@ -31,6 +31,10 @@ __decorate([
     repository_1.property(),
     __metadata("design:type", String)
 ], Credential.prototype, "role", void 0);
+__decorate([
+    repository_1.property(),
+    __metadata("design:type", String)
+], Credential.prototype, "fcmId", void 0);
 Credential = __decorate([
     repository_1.model(),
     __metadata("design:paramtypes", [Object])

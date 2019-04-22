@@ -11,6 +11,8 @@ export class Credential extends Model {
   username?: string;
   @property()
   role?: string;
+  @property()
+  fcmId?: string;
 
   constructor(data?: Partial<Credential>) {
     super(data);

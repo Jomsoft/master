@@ -34,7 +34,7 @@ let Users = class Users extends repository_1.Entity {
         this.generateJWT = function () {
             const today = new Date();
             const expirationDate = new Date(today);
-            expirationDate.setDate(today.getDate() + 1);
+            expirationDate.setDate(today.getDate() + 7);
             return jwt.sign({
                 username: this.username,
                 email: this.email,
@@ -78,6 +78,18 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Users.prototype, "role", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string',
+    }),
+    __metadata("design:type", String)
+], Users.prototype, "fcmId", void 0);
+__decorate([
+    repository_1.property({
+        type: 'string'
+    }),
+    __metadata("design:type", Array)
+], Users.prototype, "listUnits", void 0);
 __decorate([
     repository_1.property({
         type: 'string'

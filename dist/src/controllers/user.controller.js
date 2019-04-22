@@ -30,6 +30,9 @@ let UserController = class UserController {
     }
     async login(user) {
         let approved = await user_auth_1.getAccessTokenForUser(this.userRepository, user);
+        await this.userRepository.updateById(approved._id, {
+            fcmId: user.fcmId,
+        });
         return approved;
     }
     async create(user) {
@@ -63,7 +66,7 @@ let UserController = class UserController {
     async replaceById(id, user) {
         await this.userRepository.replaceById(id, user);
     }
-    async testFcm() {
+    async sendNotification() {
         // This registration token comes from the client FCM SDKs.
         let registrationToken = 'e-y5LHI13io:APA91bFtTSjPvKXqg_0ir3bqypXWxL4qd16bvMA-9wJCIfbBw8lBxFSTUIEC7oLLrv5Xw6SzlSus2OGRGqVOfk-uXI2__NG4tWZHnp7KC2sg5-a5l4nArX2wuzxCPtQ_YzdSMoNslJjn';
         let message = {
@@ -75,9 +78,16 @@ let UserController = class UserController {
                 title: 'Monthly invoice is here!',
                 body: 'Current due: RM359.00, Payable: RM 209.00'
             },
-            token: registrationToken
+            token: registrationToken,
+            android: {
+                notification: {
+                    sound: 'default',
+                    color: '#3333ff'
+                }
+            }
         };
         firebase_messaging_1.sendMessage(message);
+        return message;
     }
 };
 __decorate([
@@ -92,7 +102,14 @@ __decorate([
         responses: {
             '200': {
                 description: 'Login endpoint',
-                content: { 'application/json': { schema: { type: 'object', items: { 'x-ts-type': { '_id': 'string', 'email': 'string', 'token': 'string' } } } } },
+                content: {
+                    'application/json': {
+                        schema: {
+                            type: 'object',
+                            items: { 'x-ts-type': { '_id': 'string', 'email': 'string', 'token': 'string' } }
+                        }
+                    }
+                },
             },
         },
     }),
@@ -211,11 +228,39 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "replaceById", null);
 __decorate([
-    rest_1.get('/fcmTest'),
+    rest_1.post('/notificationTest', {
+        responses: {
+            '200': {
+                description: 'Notification endpoint',
+                content: {
+                    'application/json': {
+                        schema: {
+                            'x-ts-type': {
+                                'data': String
+                            }
+                        },
+                    },
+                },
+            },
+            '204': {
+                description: 'Notification endpoint',
+                content: {
+                    'application/json': {
+                        schema: {
+                            type: 'object',
+                            items: {
+                                'x-ts-type': {}
+                            }
+                        }
+                    },
+                },
+            },
+        },
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "testFcm", null);
+], UserController.prototype, "sendNotification", null);
 UserController = __decorate([
     __param(0, repository_1.repository(repositories_1.UserRepository)),
     __param(1, core_1.inject(authentication_1.AuthenticationBindings.CURRENT_USER, { optional: true })),

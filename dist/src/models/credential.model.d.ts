@@ -4,5 +4,6 @@ export declare class Credential extends Model {
     password: string;
     username?: string;
     role?: string;
+    fcmId?: string;
     constructor(data?: Partial<Credential>);
 }
