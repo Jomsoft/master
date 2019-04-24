@@ -5,7 +5,7 @@ export declare class Users extends Entity {
     email?: string;
     role: string;
     fcmId: string;
-    listUnits?: Array<String>;
+    listUnits?: Array<string>;
     salt?: string;
     hash?: string;
     constructor(data?: Partial<Users>);

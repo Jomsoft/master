@@ -20,6 +20,7 @@ const repositories_1 = require("../repositories");
 const user_auth_1 = require("../utils/user.auth");
 const authentication_1 = require("@loopback/authentication");
 const firebase_messaging_1 = require("../utils/firebase-messaging");
+const notification_model_1 = require("../models/notification.model");
 let UserController = class UserController {
     constructor(userRepository, user) {
         this.userRepository = userRepository;
@@ -66,28 +67,34 @@ let UserController = class UserController {
     async replaceById(id, user) {
         await this.userRepository.replaceById(id, user);
     }
-    async sendNotification() {
+    async sendNotification(notification) {
         // This registration token comes from the client FCM SDKs.
-        let registrationToken = 'e-y5LHI13io:APA91bFtTSjPvKXqg_0ir3bqypXWxL4qd16bvMA-9wJCIfbBw8lBxFSTUIEC7oLLrv5Xw6SzlSus2OGRGqVOfk-uXI2__NG4tWZHnp7KC2sg5-a5l4nArX2wuzxCPtQ_YzdSMoNslJjn';
-        let message = {
-            data: {
-                score: '850',
-                time: '2:45'
-            },
-            notification: {
-                title: 'Monthly invoice is here!',
-                body: 'Current due: RM359.00, Payable: RM 209.00'
-            },
-            token: registrationToken,
-            android: {
-                notification: {
-                    sound: 'default',
-                    color: '#3333ff'
-                }
+        console.log(notification.listUnits);
+        let listFcmToken = [];
+        let listUser = await this.userRepository.find({
+            where: {
+                listUnits: { inq: [notification.listUnits] }
             }
-        };
-        firebase_messaging_1.sendMessage(message);
-        return message;
+        });
+        // { inq: listUnits}
+        listUser.forEach((user) => {
+            listFcmToken.push(user.fcmId);
+        });
+        listFcmToken.forEach((token) => {
+            let message = {
+                data: notification.data,
+                notification: notification.notification,
+                token: token,
+                android: {
+                    notification: {
+                        sound: 'default',
+                        color: '#3333ff'
+                    }
+                }
+            };
+            firebase_messaging_1.sendMessage(message);
+        });
+        return listFcmToken;
     }
 };
 __decorate([
@@ -235,30 +242,16 @@ __decorate([
                 content: {
                     'application/json': {
                         schema: {
-                            'x-ts-type': {
-                                'data': String
-                            }
-                        },
-                    },
-                },
-            },
-            '204': {
-                description: 'Notification endpoint',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            items: {
-                                'x-ts-type': {}
-                            }
+                            'x-ts-type': notification_model_1.NotificationModel
                         }
                     },
                 },
             },
         },
     }),
+    __param(0, rest_1.requestBody()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [notification_model_1.NotificationModel]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "sendNotification", null);
 UserController = __decorate([

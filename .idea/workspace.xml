@@ -2,24 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21cb8532-f92c-4c7b-8f16-8687611b8813" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/models/notification.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/controllers/user.controller.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controllers/user.controller.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controllers/user.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/controllers/user.controller.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/controllers/user.controller.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/models/credential.model.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/credential.model.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/models/credential.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/credential.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/models/credential.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/credential.model.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/models/fcm.message.model.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/models/fcm.message.model.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/src/models/fcm.message.model.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/notification.model.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/notification.model.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/notification.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/notification.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/src/models/notification.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/notification.model.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/models/user.model.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/user.model.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/user.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/src/models/user.model.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/src/models/user.model.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controllers/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/credential.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/credential.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/notification.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/notification.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/models/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/user.model.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,19 +27,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/firebase-helper.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controllers/user.controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+            <state relative-caret-position="395">
+              <caret line="203" column="55" selection-start-line="203" selection-start-column="55" selection-end-line="203" selection-end-column="55" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -55,6 +39,47 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/models/notification.model.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/firebase-admin/lib/index.d.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="395" column="42" lean-forward="true" selection-start-line="395" selection-start-column="2" selection-end-line="395" selection-end-column="42" />
+              <folding>
+                <element signature="n#v1beta1#0;n#firestore#0;n#admin#8" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/user.model.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="966">
+              <caret line="46" column="4" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="48" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/settings.model.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/credential.model.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
@@ -78,14 +103,9 @@
         <entry file="file://$PROJECT_DIR$/src/utils/firebase-messaging.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
-              <caret line="2" column="64" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
+              <caret line="2" column="56" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/strings.ts">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -100,33 +120,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/user.model.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/models/units.model.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
               <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/providers/auth-action.provider.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-360">
-              <folding>
-                <element signature="e#0#66#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -143,6 +140,10 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>login</find>
+      <find>add</find>
+      <find>ar</find>
+      <find>condition</find>
+      <find>export</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,11 +169,11 @@
         <option value="$PROJECT_DIR$/src/utils/firebase-helper.ts" />
         <option value="$PROJECT_DIR$/src/models/fcm.message.model.ts" />
         <option value="$PROJECT_DIR$/src/utils/firebase-messaging.ts" />
-        <option value="$PROJECT_DIR$/src/models/notification.model.ts" />
         <option value="$PROJECT_DIR$/src/models/index.ts" />
         <option value="$PROJECT_DIR$/src/models/credential.model.ts" />
-        <option value="$PROJECT_DIR$/src/controllers/user.controller.ts" />
         <option value="$PROJECT_DIR$/src/models/user.model.ts" />
+        <option value="$PROJECT_DIR$/src/controllers/user.controller.ts" />
+        <option value="$PROJECT_DIR$/src/models/notification.model.ts" />
       </list>
     </option>
   </component>
@@ -317,16 +318,15 @@
       <workItem from="1555079295181" duration="2254000" />
       <workItem from="1555232279593" duration="269000" />
       <workItem from="1555241923912" duration="5250000" />
-      <workItem from="1555511231659" duration="4072000" />
+      <workItem from="1555511231659" duration="12969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34961000" />
+    <option name="totallyTimeSpent" value="43858000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="-280" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26943558" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -480,13 +480,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@loopback/repository/src/repositories/legacy-juggler-bridge.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7128">
-          <caret line="90" column="13" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manifest.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -549,13 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="1412" column="4" selection-start-line="1412" selection-start-column="4" selection-end-line="1412" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tsconfig.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="336">
@@ -588,13 +574,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/fcm.message.model.ts" />
-    <entry file="file://$PROJECT_DIR$/node_modules/@loopback/repository/src/common-types.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/openapi3-ts/dist/model/OpenApi.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -603,9 +582,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/material-colors/dist/colors.js" />
-    <entry file="file://$PROJECT_DIR$/src/models/notification.model.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/colors/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1040">
@@ -643,24 +619,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/firebase-admin/lib/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8946">
-          <caret line="428" column="7" selection-start-line="428" selection-start-column="7" selection-end-line="428" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/keys/jombill-597a8-firebase-adminsdk-tbeay-e31ba839cf.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/user.auth.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-310">
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/firebase-helper.ts">
       <provider selected="true" editor-type-id="text-editor">
@@ -678,6 +638,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/strings.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/user.auth.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-310">
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="195" column="39" selection-start-line="195" selection-start-column="36" selection-end-line="195" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@loopback/repository/src/common-types.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@loopback/repository/src/repositories/legacy-juggler-bridge.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="336" column="24" lean-forward="true" selection-start-line="336" selection-start-column="24" selection-end-line="336" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@loopback/repository/src/model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="33" column="2" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/providers/auth-strategy.provider.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-821">
@@ -687,23 +687,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/strings.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/firebase-messaging.ts">
+    <entry file="file://$PROJECT_DIR$/node_modules/@loopback/repository/src/query.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="64" selection-start-line="2" selection-start-column="64" selection-end-line="2" selection-end-column="64" />
+        <state relative-caret-position="209">
+          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="53" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/user.controller.ts">
+    <entry file="file://$PROJECT_DIR$/node_modules/@loopback/repository/dist/query.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="53" column="30" lean-forward="true" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -716,11 +710,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/models/user.model.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="37" column="28" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+        <state relative-caret-position="966">
+          <caret line="46" column="4" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="48" selection-end-column="5" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/firebase-messaging.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="56" selection-start-line="2" selection-start-column="56" selection-end-line="2" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -728,6 +729,39 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/settings.model.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/firebase-admin/lib/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="395" column="42" lean-forward="true" selection-start-line="395" selection-start-column="2" selection-end-line="395" selection-end-column="42" />
+          <folding>
+            <element signature="n#v1beta1#0;n#firestore#0;n#admin#8" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/user.controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="203" column="55" selection-start-line="203" selection-start-column="55" selection-end-line="203" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/notification.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

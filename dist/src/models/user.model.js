@@ -85,9 +85,7 @@ __decorate([
     __metadata("design:type", String)
 ], Users.prototype, "fcmId", void 0);
 __decorate([
-    repository_1.property({
-        type: 'string'
-    }),
+    repository_1.property.array(String),
     __metadata("design:type", Array)
 ], Users.prototype, "listUnits", void 0);
 __decorate([

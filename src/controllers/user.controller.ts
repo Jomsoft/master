@@ -1,5 +1,5 @@
 import {inject} from '@loopback/core';
-import {Count, CountSchema, Filter, repository, Where,} from '@loopback/repository';
+import {Count, CountSchema, Filter, repository, Where} from '@loopback/repository';
 import {
     get,
     getFilterSchemaFor,
@@ -16,7 +16,7 @@ import {UserRepository} from '../repositories';
 import {getAccessTokenForUser, validateCredentials} from '../utils/user.auth';
 import {authenticate, AuthenticationBindings, UserProfile} from '@loopback/authentication';
 import {sendMessage} from "../utils/firebase-messaging";
-import * as admin from "firebase-admin";
+import {NotificationModel} from "../models/notification.model";
 
 export class UserController {
 
@@ -50,7 +50,7 @@ export class UserController {
     })
     async login(@requestBody() user: Credential) {
         let approved = await getAccessTokenForUser(this.userRepository, user);
-        await this.userRepository.updateById(approved._id,{
+        await this.userRepository.updateById(approved._id, {
             fcmId: user.fcmId,
         });
         return approved;
@@ -177,50 +177,42 @@ export class UserController {
                 content: {
                     'application/json': {
                         schema: {
-                            'x-ts-type': {
-                                'data': String
-                            }
-                        },
-                    },
-                },
-            },
-            '204': {
-                description: 'Notification endpoint',
-                content: {
-                    'application/json': {
-                        schema: {
-                            type: 'object',
-                            items: {
-                                'x-ts-type': {}
-                            }
+                                'x-ts-type': NotificationModel
                         }
                     },
                 },
             },
         },
     })
-    async sendNotification(): Promise<admin.messaging.Message> {
+    async sendNotification(@requestBody() notification: NotificationModel): Promise<Array<string>> {
         // This registration token comes from the client FCM SDKs.
-        let registrationToken = 'e-y5LHI13io:APA91bFtTSjPvKXqg_0ir3bqypXWxL4qd16bvMA-9wJCIfbBw8lBxFSTUIEC7oLLrv5Xw6SzlSus2OGRGqVOfk-uXI2__NG4tWZHnp7KC2sg5-a5l4nArX2wuzxCPtQ_YzdSMoNslJjn';
-        let message = {
-            data: {
-                score: '850',
-                time: '2:45'
-            },
-            notification: {
-                title: 'Monthly invoice is here!',
-                body: 'Current due: RM359.00, Payable: RM 209.00'
-            },
-            token: registrationToken,
-            android: {
-                notification: {
-                    sound: 'default',
-                    color: '#3333ff'
-                }
+        console.log(notification.listUnits);
+        let listFcmToken: Array<string> = [];
+        let listUser: Array<Users> = await this.userRepository.find({
+            where: {
+                listUnits: {inq: [notification.listUnits]}
             }
-        };
-        sendMessage(message);
-        return message;
+        });
+        // { inq: listUnits}
+        listUser.forEach((user) => {
+            listFcmToken.push(user.fcmId);
+        });
+
+        listFcmToken.forEach((token) => {
+            let message = {
+                data: notification.data,
+                notification: notification.notification,
+                token: token,
+                android: {
+                    notification: {
+                        sound: 'default',
+                        color: '#3333ff'
+                    }
+                }
+            };
+            sendMessage(message)
+        });
+        return listFcmToken;
     }
 
     // @authenticate('jwt')

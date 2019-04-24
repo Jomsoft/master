@@ -1,7 +1,6 @@
 import {Entity, model, property} from '@loopback/repository';
 import * as crypto from 'crypto';
 import * as jwt from 'jsonwebtoken';
-import {Units} from "./units.model";
 
 @model()
 export class Users extends Entity {
@@ -32,10 +31,8 @@ export class Users extends Entity {
     })
     fcmId: string;
 
-    @property({
-        type: 'string'
-    })
-    listUnits?: Array<String>;
+    @property.array(String)
+    listUnits?: Array<string>;
 
     @property({
         type: 'string'
