@@ -12,6 +12,11 @@ async function main(options = {}) {
         options = {};
     if (!options.rest)
         options.rest = {};
+    options.rest.port = 3000;
+    options.rest.host = '192.168.0.148';
+    console.log(`isLocal: ${appEnv.isLocal}`);
+    console.log(`port: ${options.rest.port}`);
+    console.log(`host: ${options.rest.host}`);
     options.rest.port = appEnv.isLocal ? options.rest.port : appEnv.port;
     options.rest.host = appEnv.isLocal ? options.rest.host : appEnv.host;
     const app = new application_1.LoopbackBillingApplication(options);
