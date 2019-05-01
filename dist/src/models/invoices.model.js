@@ -108,9 +108,9 @@ __decorate([
 ], Invoices.prototype, "icptRate", void 0);
 __decorate([
     repository_1.property({
-        type: 'string',
+        type: 'number',
     }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Invoices.prototype, "icptAmount", void 0);
 __decorate([
     repository_1.property({
@@ -120,9 +120,9 @@ __decorate([
 ], Invoices.prototype, "sedaRate", void 0);
 __decorate([
     repository_1.property({
-        type: 'string',
+        type: 'number',
     }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], Invoices.prototype, "sedaAmount", void 0);
 __decorate([
     repository_1.property({

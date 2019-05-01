@@ -79,9 +79,9 @@ export class Invoices extends Entity {
   icptRate?: number;
 
   @property({
-    type: 'string',
+    type: 'number',
   })
-  icptAmount?: string;
+  icptAmount?: number;
 
   @property({
     type: 'number',
@@ -89,9 +89,9 @@ export class Invoices extends Entity {
   sedaRate?: number;
 
   @property({
-    type: 'string',
+    type: 'number',
   })
-  sedaAmount?: string;
+  sedaAmount?: number;
 
   @property({
     type: 'string',

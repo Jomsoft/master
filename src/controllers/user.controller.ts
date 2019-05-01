@@ -137,7 +137,10 @@ export class UserController {
         },
     })
     async findById(@param.path.string('id') id: string): Promise<Users> {
-        return await this.userRepository.findById(id);
+        let user = await this.userRepository.findById(id);
+        delete user.hash;
+        delete user.salt;
+        return user;
     }
 
     @authenticate('jwt')

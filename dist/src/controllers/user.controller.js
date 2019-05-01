@@ -59,7 +59,10 @@ let UserController = class UserController {
         return await this.userRepository.updateAll(user, where);
     }
     async findById(id) {
-        return await this.userRepository.findById(id);
+        let user = await this.userRepository.findById(id);
+        delete user.hash;
+        delete user.salt;
+        return user;
     }
     async updateById(id, user) {
         await this.userRepository.updateById(id, user);

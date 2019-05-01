@@ -16,9 +16,9 @@ export declare class Invoices extends Entity {
     usageAmount?: string;
     usageBlock?: object[];
     icptRate?: number;
-    icptAmount?: string;
+    icptAmount?: number;
     sedaRate?: number;
-    sedaAmount?: string;
+    sedaAmount?: number;
     taxableAmount?: string;
     taxRate?: number;
     taxAmount?: string;
