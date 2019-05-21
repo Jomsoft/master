@@ -29,6 +29,11 @@ let InvoicesController = class InvoicesController {
     async find(filter) {
         return await this.invoicesRepository.find(filter);
     }
+    async findDistinct(filter) {
+        let invoices = await this.invoicesRepository.find(filter);
+        let uniqueInvoices = Array.from(new Set(invoices));
+        return uniqueInvoices;
+    }
     async updateAll(invoices, where) {
         return await this.invoicesRepository.updateAll(invoices, where);
     }
@@ -91,6 +96,24 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], InvoicesController.prototype, "find", null);
+__decorate([
+    rest_1.get('/invoices/distinct', {
+        responses: {
+            '200': {
+                description: 'Array of unique Invoices model instances',
+                content: {
+                    'application/json': {
+                        schema: { type: 'array', items: { 'x-ts-type': models_1.Invoices } },
+                    },
+                },
+            },
+        },
+    }),
+    __param(0, rest_1.param.query.object('filter', rest_1.getFilterSchemaFor(models_1.Invoices))),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], InvoicesController.prototype, "findDistinct", null);
 __decorate([
     rest_1.patch('/invoices', {
         responses: {

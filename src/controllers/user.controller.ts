@@ -1,6 +1,7 @@
 import {inject} from '@loopback/core';
 import {Count, CountSchema, Filter, repository, Where} from '@loopback/repository';
 import {
+    del,
     get,
     getFilterSchemaFor,
     getWhereSchemaFor,
@@ -12,7 +13,7 @@ import {
     requestBody,
 } from '@loopback/rest';
 import {Credential, Users} from '../models';
-import {UserRepository} from '../repositories';
+import {NotificationsRepository, UserRepository} from '../repositories';
 import {getAccessTokenForUser, validateCredentials} from '../utils/user.auth';
 import {authenticate, AuthenticationBindings, UserProfile} from '@loopback/authentication';
 import {sendMessage} from "../utils/firebase-messaging";
@@ -23,6 +24,8 @@ export class UserController {
     constructor(
         @repository(UserRepository)
         public userRepository: UserRepository,
+        @repository(NotificationsRepository)
+        private notificationRepository: NotificationsRepository,
         @inject(AuthenticationBindings.CURRENT_USER, {optional: true}) private user: UserProfile,
     ) {
     }
@@ -50,9 +53,10 @@ export class UserController {
     })
     async login(@requestBody() user: Credential) {
         let approved = await getAccessTokenForUser(this.userRepository, user);
-        await this.userRepository.updateById(approved._id, {
-            fcmId: user.fcmId,
-        });
+        if (user.fcmId != null)
+            await this.userRepository.updateById(approved._id, {
+                fcmId: user.fcmId,
+            });
         return approved;
     }
 
@@ -196,12 +200,12 @@ export class UserController {
                 listUnits: {inq: [notification.listUnits]}
             }
         });
-        // { inq: listUnits}
+        // add each fcmId to list
         listUser.forEach((user) => {
             listFcmToken.push(user.fcmId);
         });
-
-        listFcmToken.forEach((token) => {
+        // create a message for each id and send notification
+        listFcmToken.forEach(async (token,index) => {
             let message = {
                 data: notification.data,
                 notification: notification.notification,
@@ -213,20 +217,32 @@ export class UserController {
                     }
                 }
             };
-            sendMessage(message)
+            await this.notificationRepository.create({
+                userId: listUser[index]._id,
+                createdAt: Date.now(),
+                data: notification.data,
+                notification: notification.notification,
+                android: {
+                    notification: {
+                        sound: 'default',
+                        color: '#3333ff'
+                    }
+                }
+            });
+            sendMessage(message);
         });
         return listFcmToken;
     }
 
-    // @authenticate('jwt')
-    // @del('/users/{id}', {
-    //   responses: {
-    //     '204': {
-    //       description: 'User DELETE success',
-    //     },
-    //   },
-    // })
-    // async deleteById(@param.path.string('id') id: string): Promise<void> {
-    //   await this.userRepository.deleteById(id);
-    // }
+    @authenticate('jwt')
+    @del('/users/{id}', {
+      responses: {
+        '204': {
+          description: 'User DELETE success',
+        },
+      },
+    })
+    async deleteById(@param.path.string('id') id: string): Promise<void> {
+      await this.userRepository.deleteById(id);
+    }
 }

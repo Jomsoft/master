@@ -47,7 +47,7 @@ export class AgendaController {
   @post('/agenda/function', {
     responses: {
       '200': {
-        description: 'Get all function',
+        description: 'create a function',
         content: {
           'application/json': {
             schema: { type: 'array', items: { 'x-ts-type': AgendaAttributes } },

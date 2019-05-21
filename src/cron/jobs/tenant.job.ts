@@ -10,7 +10,7 @@ export let tenantJob = async () => {
     concurrency: 10, // number of jobs that can be running at any given moment
     lockLimit: undefined, // max number jobs that can be locked at any given moment
     lockLifetime: 10000, // time limit for job before timeout in milliseconds
-  }
+  };
 
   await agenda.define(AgendaFunction.TENANT_JOB, options, (job, done) => {
     // let { jobs } = job.attrs.data; // data to be pass
@@ -18,4 +18,4 @@ export let tenantJob = async () => {
     // do tenant job here
     done();
   });
-}
+};

@@ -6,3 +6,4 @@ export * from './rate.repository';
 export * from './tenants.repository';
 export * from './user.repository';
 export * from './units.repository';
+export * from './notifications.repository';

@@ -1,6 +1,6 @@
 import { JobAttributes } from '../models/agenda.attributes';
-import { AgendaProperties } from '../models/agenda.properties.model';
-import { AgendaJob } from '../models/agenda.job.model';
+import { AgendaProperties } from '../models';
+import { AgendaJob } from '../models';
 import { agenda } from './agenda/agenda.config';
 import { ObjectId } from 'bson';
 
@@ -40,28 +40,28 @@ export let deleteJob = async (objId?: string | ObjectId) => {
   } catch (e) {
     console.log(e);
   }
-}
+};
 
 export let startAgenda = async () => {
   console.log('start agenda');
   await agenda.start();
-}
+};
 
 export let stopAgenda = async () => {
   console.log('stop agenda');
   await agenda.stop();
-}
+};
 
 export let listenToAgenda = async () => {
   await agenda.addListener('ready', (data) => {
     console.log(data);
   })
-}
+};
 
 export let jobAttributesById = async (options: AgendaProperties, attOptions: JobAttributes) => {
   options._id = new ObjectId(options._id);
   let jobs = await agenda.jobs(options);
-  jobs.forEach((job) => {
+  jobs.forEach(async (job) => {
 
     if (attOptions.computeNextRunAt)
       job.computeNextRunAt();
@@ -76,26 +76,26 @@ export let jobAttributesById = async (options: AgendaProperties, attOptions: Job
     if (attOptions.priority)
       job.priority(attOptions.priority);
     if (attOptions.remove)
-      job.remove();
+      await job.remove();
     if (attOptions.repeatAt)
       job.repeatAt(attOptions.repeatAt);
     if (attOptions.repeatEvery)
       job.repeatEvery(attOptions.repeatEvery.interval, attOptions.repeatEvery.option);
     if (attOptions.run)
-      job.run();
+      await job.run();
     if (attOptions.schedule)
       job.schedule(attOptions.schedule);
     if (attOptions.touch)
-      job.touch();
+      await job.touch();
     if (attOptions.unique)
       job.unique(attOptions.unique);
 
-    job.save();
+    await job.save();
 
   });
 
   return jobs;
-}
+};
 
 
 

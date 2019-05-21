@@ -148,6 +148,18 @@ __decorate([
     }),
     __metadata("design:type", Number)
 ], Invoices.prototype, "invAmount", void 0);
+__decorate([
+    repository_1.property({
+        type: 'number',
+    }),
+    __metadata("design:type", Number)
+], Invoices.prototype, "dueAmount", void 0);
+__decorate([
+    repository_1.property({
+        type: 'date',
+    }),
+    __metadata("design:type", Date)
+], Invoices.prototype, "dueDate", void 0);
 Invoices = __decorate([
     repository_1.model(),
     __metadata("design:paramtypes", [Object])

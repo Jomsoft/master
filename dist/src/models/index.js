@@ -17,4 +17,5 @@ __export(require("./credential.model"));
 __export(require("./units.model"));
 __export(require("./buildings.model"));
 __export(require("./settings.model"));
+__export(require("./notifications.model"));
 //# sourceMappingURL=index.js.map

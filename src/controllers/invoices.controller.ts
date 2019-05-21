@@ -69,6 +69,26 @@ export class InvoicesController {
     return await this.invoicesRepository.find(filter);
   }
 
+  @get('/invoices/distinct', {
+    responses: {
+      '200': {
+        description: 'Array of unique Invoices model instances',
+        content: {
+          'application/json': {
+            schema: {type: 'array', items: {'x-ts-type': Invoices}},
+          },
+        },
+      },
+    },
+  })
+  async findDistinct(
+      @param.query.object('filter', getFilterSchemaFor(Invoices)) filter?: Filter,
+  ): Promise<Invoices[]> {
+    let invoices = await this.invoicesRepository.find(filter);
+    let uniqueInvoices = Array.from(new Set(invoices));
+    return uniqueInvoices;
+  }
+
   @patch('/invoices', {
     responses: {
       '200': {

@@ -23,5 +23,7 @@ export declare class Invoices extends Entity {
     taxRate?: number;
     taxAmount?: string;
     invAmount?: number;
+    dueAmount?: number;
+    dueDate?: Date;
     constructor(data?: Partial<Invoices>);
 }

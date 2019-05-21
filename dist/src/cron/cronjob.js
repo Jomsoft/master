@@ -56,7 +56,7 @@ exports.listenToAgenda = async () => {
 exports.jobAttributesById = async (options, attOptions) => {
     options._id = new bson_1.ObjectId(options._id);
     let jobs = await agenda_config_1.agenda.jobs(options);
-    jobs.forEach((job) => {
+    jobs.forEach(async (job) => {
         if (attOptions.computeNextRunAt)
             job.computeNextRunAt();
         if (attOptions.disable)
@@ -70,20 +70,20 @@ exports.jobAttributesById = async (options, attOptions) => {
         if (attOptions.priority)
             job.priority(attOptions.priority);
         if (attOptions.remove)
-            job.remove();
+            await job.remove();
         if (attOptions.repeatAt)
             job.repeatAt(attOptions.repeatAt);
         if (attOptions.repeatEvery)
             job.repeatEvery(attOptions.repeatEvery.interval, attOptions.repeatEvery.option);
         if (attOptions.run)
-            job.run();
+            await job.run();
         if (attOptions.schedule)
             job.schedule(attOptions.schedule);
         if (attOptions.touch)
-            job.touch();
+            await job.touch();
         if (attOptions.unique)
             job.unique(attOptions.unique);
-        job.save();
+        await job.save();
     });
     return jobs;
 };

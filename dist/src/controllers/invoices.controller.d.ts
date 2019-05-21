@@ -7,6 +7,7 @@ export declare class InvoicesController {
     create(invoices: Invoices): Promise<Invoices>;
     count(where?: Where): Promise<Count>;
     find(filter?: Filter): Promise<Invoices[]>;
+    findDistinct(filter?: Filter): Promise<Invoices[]>;
     updateAll(invoices: Invoices, where?: Where): Promise<Count>;
     findById(id: string): Promise<Invoices>;
     updateById(id: string, invoices: Invoices): Promise<void>;

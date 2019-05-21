@@ -18,7 +18,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
 const admin = __importStar(require("firebase-admin"));
-let NotificationModel = class NotificationModel extends repository_1.Model {
+let NotificationModel = class NotificationModel extends repository_1.Entity {
     constructor(data) {
         super(data);
     }

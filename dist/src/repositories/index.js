@@ -11,4 +11,5 @@ __export(require("./rate.repository"));
 __export(require("./tenants.repository"));
 __export(require("./user.repository"));
 __export(require("./units.repository"));
+__export(require("./notifications.repository"));
 //# sourceMappingURL=index.js.map

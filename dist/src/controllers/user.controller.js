@@ -22,8 +22,9 @@ const authentication_1 = require("@loopback/authentication");
 const firebase_messaging_1 = require("../utils/firebase-messaging");
 const notification_model_1 = require("../models/notification.model");
 let UserController = class UserController {
-    constructor(userRepository, user) {
+    constructor(userRepository, notificationRepository, user) {
         this.userRepository = userRepository;
+        this.notificationRepository = notificationRepository;
         this.user = user;
     }
     getUser() {
@@ -31,9 +32,10 @@ let UserController = class UserController {
     }
     async login(user) {
         let approved = await user_auth_1.getAccessTokenForUser(this.userRepository, user);
-        await this.userRepository.updateById(approved._id, {
-            fcmId: user.fcmId,
-        });
+        if (user.fcmId != null)
+            await this.userRepository.updateById(approved._id, {
+                fcmId: user.fcmId,
+            });
         return approved;
     }
     async create(user) {
@@ -79,11 +81,12 @@ let UserController = class UserController {
                 listUnits: { inq: [notification.listUnits] }
             }
         });
-        // { inq: listUnits}
+        // add each fcmId to list
         listUser.forEach((user) => {
             listFcmToken.push(user.fcmId);
         });
-        listFcmToken.forEach((token) => {
+        // create a message for each id and send notification
+        listFcmToken.forEach(async (token, index) => {
             let message = {
                 data: notification.data,
                 notification: notification.notification,
@@ -95,9 +98,24 @@ let UserController = class UserController {
                     }
                 }
             };
+            await this.notificationRepository.create({
+                userId: listUser[index]._id,
+                createdAt: Date.now(),
+                data: notification.data,
+                notification: notification.notification,
+                android: {
+                    notification: {
+                        sound: 'default',
+                        color: '#3333ff'
+                    }
+                }
+            });
             firebase_messaging_1.sendMessage(message);
         });
         return listFcmToken;
+    }
+    async deleteById(id) {
+        await this.userRepository.deleteById(id);
     }
 };
 __decorate([
@@ -257,10 +275,26 @@ __decorate([
     __metadata("design:paramtypes", [notification_model_1.NotificationModel]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "sendNotification", null);
+__decorate([
+    authentication_1.authenticate('jwt'),
+    rest_1.del('/users/{id}', {
+        responses: {
+            '204': {
+                description: 'User DELETE success',
+            },
+        },
+    }),
+    __param(0, rest_1.param.path.string('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "deleteById", null);
 UserController = __decorate([
     __param(0, repository_1.repository(repositories_1.UserRepository)),
-    __param(1, core_1.inject(authentication_1.AuthenticationBindings.CURRENT_USER, { optional: true })),
-    __metadata("design:paramtypes", [repositories_1.UserRepository, Object])
+    __param(1, repository_1.repository(repositories_1.NotificationsRepository)),
+    __param(2, core_1.inject(authentication_1.AuthenticationBindings.CURRENT_USER, { optional: true })),
+    __metadata("design:paramtypes", [repositories_1.UserRepository,
+        repositories_1.NotificationsRepository, Object])
 ], UserController);
 exports.UserController = UserController;
 //# sourceMappingURL=user.controller.js.map

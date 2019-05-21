@@ -113,6 +113,16 @@ export class Invoices extends Entity {
   })
   invAmount?: number;
 
+  @property({
+    type: 'number',
+  })
+  dueAmount?: number;
+
+  @property({
+    type: 'date',
+  })
+  dueDate?: Date;
+
   constructor(data?: Partial<Invoices>) {
     super(data);
   }

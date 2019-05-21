@@ -12,4 +12,5 @@ __export(require("./rate.controller"));
 __export(require("./tenants.controller"));
 __export(require("./user.controller"));
 __export(require("./units.controller"));
+__export(require("./notifications.controller"));
 //# sourceMappingURL=index.js.map
