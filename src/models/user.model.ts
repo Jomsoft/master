@@ -48,18 +48,18 @@ export class Users extends Entity {
         super(data);
     }
 
-    setPassword = function (password: string) {
+    setPassword = (password: string) => {
         this.salt = crypto.randomBytes(16).toString('hex');
         this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
     };
 
-    validatePassword = function (password: string) {
-        const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+    validatePassword = (password: string) => {
+        const hash = crypto.pbkdf2Sync(password, this.salt!, 10000, 512, 'sha512').toString('hex');
         console.log(this.hash === hash);
         return this.hash === hash;
     };
 
-    generateJWT = function () {
+    generateJWT = () => {
         const today = new Date();
         const expirationDate = new Date(today);
         expirationDate.setDate(today.getDate() + 7);
@@ -71,9 +71,9 @@ export class Users extends Entity {
             role: this.role,
             exp: parseInt(`${expirationDate.getTime() / 1000}`, 10),
         }, 'KVqfGR5reRMV4Fphyv0isFImYxBxZJCO40tbdNf1SjZD1aVvgiaE465YP9kdWy5');
-    }
+    };
 
-    toAuthJSON = function () {
+    toAuthJSON = () => {
         return {
             _id: this._id,
             email: this.email,
