@@ -22,16 +22,16 @@ const jwt = __importStar(require("jsonwebtoken"));
 let Users = class Users extends repository_1.Entity {
     constructor(data) {
         super(data);
-        this.setPassword = function (password) {
+        this.setPassword = (password) => {
             this.salt = crypto.randomBytes(16).toString('hex');
             this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
         };
-        this.validatePassword = function (password) {
+        this.validatePassword = (password) => {
             const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
             console.log(this.hash === hash);
             return this.hash === hash;
         };
-        this.generateJWT = function () {
+        this.generateJWT = () => {
             const today = new Date();
             const expirationDate = new Date(today);
             expirationDate.setDate(today.getDate() + 7);
@@ -43,7 +43,7 @@ let Users = class Users extends repository_1.Entity {
                 exp: parseInt(`${expirationDate.getTime() / 1000}`, 10),
             }, 'KVqfGR5reRMV4Fphyv0isFImYxBxZJCO40tbdNf1SjZD1aVvgiaE465YP9kdWy5');
         };
-        this.toAuthJSON = function () {
+        this.toAuthJSON = () => {
             return {
                 _id: this._id,
                 email: this.email,

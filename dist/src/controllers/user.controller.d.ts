@@ -10,10 +10,10 @@ export declare class UserController {
     constructor(userRepository: UserRepository, notificationRepository: NotificationsRepository, user: UserProfile);
     getUser(): UserProfile;
     login(user: Credential): Promise<{
-        _id: any;
-        email: any;
-        role: any;
-        token: any;
+        _id: string | undefined;
+        email: string | undefined;
+        role: string;
+        token: string;
     }>;
     create(user: Credential): Promise<Users | undefined>;
     count(where?: Where): Promise<Count>;

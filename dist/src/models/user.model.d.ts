@@ -13,9 +13,9 @@ export declare class Users extends Entity {
     validatePassword: (password: string) => boolean;
     generateJWT: () => string;
     toAuthJSON: () => {
-        _id: any;
-        email: any;
-        role: any;
-        token: any;
+        _id: string | undefined;
+        email: string | undefined;
+        role: string;
+        token: string;
     };
 }
